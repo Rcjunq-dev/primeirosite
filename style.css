@@ -27,3 +27,8 @@ h2{
     background-color: rgb(245, 245, 245);
     color: black;
 }
+
+.carousel-item img {
+    height: 500px; /* Defina uma altura fixa que funcione bem para suas imagens */
+    object-fit: cover; /* Mantém a proporção das imagens e cobre todo o espaço disponível */
+}

@@ -12,6 +12,62 @@
       <!-- Favicons -->
     <link href="Img/favicon.png" rel="icon">
     <link href="Img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <style>
+      /* Estilo do botão de alternância */
+      .toggle-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          border: none;
+          background-color: #f8f9fa;
+          cursor: pointer;
+          transition: background-color 0.3s;
+          margin-left: 10px;
+      }
+
+      .toggle-btn .bi {
+          font-size: 1.5rem;
+      }
+
+
+      
+      /* Estilo do botão de seta */
+      .scroll-to-top {
+          position: fixed;
+          bottom: 40px;
+          right: 40px;
+          display: none; /* Inicialmente escondido */
+          width: 50px;
+          height: 50px;
+          background-color: #ff7707;
+          color: white;
+          border: none;
+          border-radius: 50%;
+          text-align: center;
+          line-height: 50px;
+          cursor: pointer;
+          font-size: 24px;
+          z-index: 1000;
+          opacity: 0;
+          transition: opacity 0.4s ease, transform 0.4s ease; /* Efeito de transição */
+      }
+
+      .scroll-to-top.show {
+          display: block; /* Mostra o botão */
+          opacity: 1; /* Faz o botão aparecer com transição */
+          transform: translateY(0); /* Move para a posição original */
+      }
+
+      .scroll-to-top.hide {
+          opacity: 0; /* Faz o botão desaparecer com transição */
+          transform: translateY(20px); /* Move o botão para baixo */
+      }
+
+  </style>
 </head>
 <body>
     <header class="container-fluid p-2 bg-warning text-center">
@@ -41,6 +97,15 @@
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="file:///E:/Faculdade/Aulas/Html/Meu%20Site/checkout.html"><i class="bi bi-cart"></i></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link bi bi-person navicon" aria-current="page" href="file:///E:/Faculdade/Aulas/Html/Meu%20Site/login.html">  Login</a>
+                  </li>
+                  <!-- Botão de alternância de modo escuro/claro -->
+                  <li class="nav-item">
+                    <button id="toggleDarkMode" class="toggle-btn ">
+                        <i id="toggleIcon" class="bi bi-check2"></i>
+                    </button>
                   </li>
                 </ul>
               </div>
@@ -267,6 +332,54 @@
         <p2>TODO O CONTEÚDO DESTA PÁGINA/PROJETO É INTEIRAMENTE ILUSTRATIVO.</p2>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+        const toggleButton = document.getElementById('toggleDarkMode');
+        const toggleIcon = document.getElementById('toggleIcon');
+
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+
+            // Alterna o ícone entre sol e lua
+            if (document.body.classList.contains('dark-mode')) {
+                toggleIcon.classList.remove('bi-check2');
+                toggleIcon.classList.add('bi-x-lg');
+            } else {
+                toggleIcon.classList.remove('bi-x-lg');
+                toggleIcon.classList.add('bi-check2');
+            }
+        });
+    </script>
+
+
+
+    <!-- Botão de seta para voltar ao topo -->
+    <button id="scrollToTopBtn" class="scroll-to-top">
+      <i class="bi bi-arrow-up"></i>
+    </button>
+    <script>
+      // Seleciona o botão
+      const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+      // Função para mostrar/esconder o botão de seta
+      window.addEventListener('scroll', () => {
+          if (window.pageYOffset > 200) {
+              scrollToTopBtn.classList.add('show');
+              scrollToTopBtn.classList.remove('hide');
+          } else {
+              scrollToTopBtn.classList.add('hide');
+              scrollToTopBtn.classList.remove('show');
+          }
+      });
+
+      // Rola para o topo ao clicar no botão
+      scrollToTopBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' }); // Rolagem suave
+      });
+  </script>
+
+
+
 </body>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
