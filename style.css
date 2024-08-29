@@ -1,0 +1,29 @@
+header p{ 
+    color: #ffffff;
+    font-weight: 600;
+}
+
+h1{
+    font-size: 63px;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+h2{
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #444444;
+    font-weight: 600;
+}
+
+.carousel-caption h5{
+    font-size: 50px;
+    color: rgb(255, 187, 0);
+    text-shadow: 2px 2px 2px black;
+}
+
+.card{
+    background-color: rgb(245, 245, 245);
+    color: black;
+}
